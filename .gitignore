@@ -1,4 +1,5 @@
-.settings/
-.project/
+./settings/
+./classpath/
+./project/
 /target/
-/src/main/java/br/eti/amazu/blankapp
+./src/main/java/br/eti/amazu/blankapp
