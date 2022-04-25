@@ -1,4 +1,4 @@
-.settings
-.project
+.settings/
+.project/
 /target/
 /src/main/java/br/eti/amazu/blankapp
