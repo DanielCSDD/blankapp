@@ -1,7 +1,4 @@
+.settings
 .settings/
 /target/
-.classpath
 .project
-*iml
-*war
-/src/main/java/br/eti/amazu/blankapp
