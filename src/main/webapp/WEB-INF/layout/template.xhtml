@@ -7,7 +7,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://java.sun.com/jsf/composite/components">
 
 <!-- Esta pagina sofrerah modificacao. -->
 <f:view contentType="text/html" locale="#{userSessionInBean.locale}">
@@ -33,7 +34,7 @@
 			<div>
 				<ui:include src="header.xhtml" />
 
-				<div style="text-align:center">
+				<div style="text-align: center">
 					<h:panelGrid cellpadding="0" cellspacing="0" width="100%"
 						style="text-align:center;margin-left:-5px;position:relative;"
 						rendered="#{configBean.config.menuType == 'menuBar'}">
@@ -49,15 +50,22 @@
 
 			<div class="body">
 				<div align="center">
-					<h:panelGrid style="height:80px;width:100%" rendered="#{not empty pageTitle}">
+					<h:panelGrid style="height:80px;width:100%"
+						rendered="#{not empty pageTitle}">
 						<h:outputText styleClass="ui-dialog-title" value="#{pageTitle}" />
 					</h:panelGrid>
 					<ui:insert name="content" />
 				</div>
 			</div>
 
-			<div style="text-align:center"> <ui:include src="footer.xhtml" /> </div>
+			<div style="text-align: center">
+				<ui:include src="footer.xhtml" />
+			</div>
 		</div>
+
+		<a:dialog />
+		<a:dialogConfirm />
+		<a:status />
 	</h:body>
 </f:view>
 </html>
