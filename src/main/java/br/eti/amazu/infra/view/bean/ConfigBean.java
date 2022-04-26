@@ -1,10 +1,13 @@
 package br.eti.amazu.infra.view.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import br.eti.amazu.infra.util.FacesUtil;
 import br.eti.amazu.infra.view.vo.Config;
 
 @Named
@@ -17,6 +20,9 @@ public class ConfigBean implements Serializable {
 	private Config config;
 
 	private String skinTheme;
+
+	// Armazena uma lista de idiomas suportados.
+	private List<String> locales = new ArrayList<>();
 
 	public void setConfiguracoes() {
 
@@ -76,5 +82,34 @@ public class ConfigBean implements Serializable {
 
 	public void setSkinTheme(String skinTheme) {
 		this.skinTheme = skinTheme;
+	}
+
+	public List<String> getLocales() {
+
+		// Utliza a classe FacesUtil para obter a lista de idiomas suportados.
+		if (locales.isEmpty()) {
+			locales = FacesUtil.getLocales();
+
+			// realiza apenas um log
+			StringBuffer strb = new StringBuffer();
+			strb.append("Linguagens suportadas: ");
+
+			int i = 1;
+			for (String str : locales) {
+				if (i == locales.size()) {
+					strb.append(str);
+
+				} else {
+					strb.append(str + ", ");
+				}
+				i++;
+			}
+			System.out.println(strb.toString());
+		}
+		return locales;
+	}
+
+	public void setLocales(List<String> locales) {
+		this.locales = locales;
 	}
 }

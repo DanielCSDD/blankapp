@@ -4,8 +4,18 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
 	version="2.3">
 
-	<lifecycle>
-		<phase-listener>
-			br.eti.amazu.infra.view.showcase.listener.PhaseTracker</phase-listener>
-	</lifecycle>
+	<application>
+    	<resource-bundle>
+			<base-name>messages</base-name>
+			<var>msg</var>
+		</resource-bundle> 
+		  		
+		<locale-config>
+			<default-locale>pt_BR</default-locale>
+			<supported-locale>en_US</supported-locale>		
+		</locale-config>
+	</application>    
+
+	<!-- <lifecycle> <phase-listener> br.eti.amazu.infra.view.showcase.listener.PhaseTracker</phase-listener> 
+		</lifecycle> -->
 </faces-config>
