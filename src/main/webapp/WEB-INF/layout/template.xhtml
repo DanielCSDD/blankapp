@@ -66,6 +66,10 @@
 		<a:dialog />
 		<a:dialogConfirm />
 		<a:status />
+
+		<p:idleMonitor timeout="2400000">
+			<p:ajax event="idle" listener="#{userSessionInBean.idleListener}" />
+		</p:idleMonitor>
 	</h:body>
 </f:view>
 </html>
