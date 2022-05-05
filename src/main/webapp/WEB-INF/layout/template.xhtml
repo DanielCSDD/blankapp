@@ -21,6 +21,9 @@
 			href="#{facesContext.externalContext.
 				requestContextPath}/resources/images/animated_favicon_daprom.gif" />
 		<h:outputStylesheet library="css" name="my_style.css" />
+
+		<h:outputStylesheet library="#{configBean.config.skinTheme}"
+			name="theme.css" />
 	</h:head>
 
 	<h:body>

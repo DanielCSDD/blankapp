@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.event.ValueChangeEvent;
 import javax.inject.Named;
 
 import br.eti.amazu.infra.util.FacesUtil;
 import br.eti.amazu.infra.view.vo.Config;
+import br.eti.amazu.infra.view.vo.Theme;
 
 @Named
 @SessionScoped
@@ -23,6 +25,10 @@ public class ConfigBean implements Serializable {
 
 	// Armazena uma lista de idiomas suportados.
 	private List<String> locales = new ArrayList<>();
+
+	// Configurando Themes
+	private Theme theme;
+	private List<Theme> themes;
 
 	public void setConfiguracoes() {
 
@@ -51,9 +57,16 @@ public class ConfigBean implements Serializable {
 		// Isto eh o que serah escrito no rodapeh da pagina.
 		config.setSkinFooter("Privacy Policy | Amazu Technology | Copyright \u00A9 2018 -" + " All rights reserved");
 
+//		Configuração de temas antigo
 		// O tema default eh o aristo.
-		skinTheme = "aristo";
-		config.setSkinTheme("primefaces-" + skinTheme);
+//		skinTheme = "aristo";
+//		config.setSkinTheme("primefaces-" + skinTheme);
+
+//		Configuração de temas do PRIMEFACES
+		this.theme = new Theme(1L, "Nova-Light", "nova-light");
+		this.themes = this.theme.getThemes();
+		this.skinTheme = this.theme.getValue();
+		this.config.setSkinTheme(this.skinTheme);
 
 		// logs
 		System.out.println("Rodando o tema: " + config.getSkinTheme());
@@ -61,6 +74,13 @@ public class ConfigBean implements Serializable {
 		System.out.println("Rodando o menu: " + config.getMenuType());
 	}
 
+	public void saveTheme(ValueChangeEvent e) {
+		this.theme = (Theme) e.getNewValue();
+		this.theme.setThemes(this.themes);
+		this.skinTheme = this.theme.getValue();
+		this.config.setSkinTheme(this.skinTheme);
+	}
+	
 	/*---------
 	 * get/set
 	 ---------*/
@@ -111,5 +131,21 @@ public class ConfigBean implements Serializable {
 
 	public void setLocales(List<String> locales) {
 		this.locales = locales;
+	}
+
+	public Theme getTheme() {
+		return theme;
+	}
+
+	public void setTheme(Theme theme) {
+		this.theme = theme;
+	}
+
+	public List<Theme> getThemes() {
+		return themes;
+	}
+
+	public void setThemes(List<Theme> themes) {
+		this.themes = themes;
 	}
 }
